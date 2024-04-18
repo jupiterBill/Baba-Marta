@@ -185,7 +185,7 @@ function updateCountMartenitsaTokensOwner(
 
 ### [H-2] `voteForMartenitsa::MartenitsaVoting` will result in a denial of service attack
 
-**Description:** The `voteForMartenitsa::MartenitsaVoting` function could result in a denial of service attack due to lack of checks for duplicates on the `_tokenIds` array an attacker could call this function numerous times to inflate the array hereby rendering the announce winner function impossible to call here's a test showcasing the intentional overpopulation of the `_tokenIds` Array and the gasleft after the population, since `announceWinner` loops through `_tokenIds` this will result in a revert due to the function running out of gas
+**Description:** The `voteForMartenitsa::MartenitsaVoting` function could result in a denial of service attack due to lack of checks for duplicates on the `_tokenIds` array an attacker could call this function numerous times to inflate the array hereby rendering the announce winner function impossible to call a test below will be showcasing the intentional overpopulation of the `_tokenIds` Array and the gasleft after the population, since `announceWinner` loops through `_tokenIds` this will result in a revert due to the function running out of gas
 
 ```javascript
    function voteForMartenitsa(uint256 tokenId) external {

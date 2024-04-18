@@ -5,7 +5,6 @@ import {Test} from "forge-std/Test.sol";
 import {BaseTest} from "./BaseTest.t.sol";
 
 contract MartenitsaMarketplace is Test, BaseTest {
-    
     function testListMartenitsaForSaleNonOwner() public createMartenitsa {
         vm.prank(chasy);
         vm.expectRevert();
@@ -72,7 +71,10 @@ contract MartenitsaMarketplace is Test, BaseTest {
         assert(list.tokenId == 0);
         assert(list.seller == chasy);
         assert(list.price == 1 wei);
-        assert(keccak256(abi.encodePacked(list.design)) == keccak256(abi.encodePacked("bracelet")));
+        assert(
+            keccak256(abi.encodePacked(list.design)) ==
+                keccak256(abi.encodePacked("bracelet"))
+        );
         assert(list.forSale == true);
     }
 }

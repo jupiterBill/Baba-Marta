@@ -5,7 +5,6 @@ import {Test, Vm} from "forge-std/Test.sol";
 import {BaseTest} from "./BaseTest.t.sol";
 
 contract MartenitsaVoting is Test, BaseTest {
-    
     function testStartVoting() public {
         vm.warp(block.timestamp);
         voting.startVoting();
@@ -43,12 +42,10 @@ contract MartenitsaVoting is Test, BaseTest {
         address winner = address(uint160(uint256(entries[0].topics[2])));
         assert(winner == chasy);
     }
-    
+
     function testGetVoteCount() public listMartenitsa {
         vm.prank(bob);
         voting.voteForMartenitsa(0);
         assert(voting.getVoteCount(0) == 1);
     }
-
-
 }
